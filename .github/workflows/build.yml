@@ -16,6 +16,8 @@ jobs:
         run: |
           npm install
           npx expo install --fix || true
+          npx expo install babel-preset-expo
+          rm -f babel.config.js
           node scripts/build-html.js
           npx expo prebuild --platform android --clean --no-install
           cd android && chmod +x gradlew && ./gradlew assembleRelease --no-daemon
